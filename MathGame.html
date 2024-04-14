@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <h1>Math Practice</h1>
+
+  <!-- Addition Section -->
+  <div class="container">
+    <h2>Addition</h2>
+    <div class="question">
+      <span id="num1"></span> + <span id="num2"></span> = ?
+    </div>
+    <form id="additionForm">
+      <input type="text" id="answer" required>
+      <input type="submit" value="Check Answer">
+    </form>
+    <p id="result"></p>
+  </div>
+
+  <!-- Multiplication Section -->
+  <div class="container">
+    <h2>Multiplication</h2>
+    <div class="question">
+      <span id="num3"></span> x <span id="num4"></span> = ?
+    </div>
+    <form id="multiplicationForm">
+      <input type="text" id="answer2" required>
+      <input type="submit" value="Check Answer">
+    </form>
+    <p id="result2"></p>
+  </div>
+
+  <!-- Subtraction Section -->
+  <div class="container">
+    <h2>Subtraction</h2>
+    <div class="question">
+      <span id="num5"></span> - <span id="num6"></span> = ?
+    </div>
+    <form id="subtractionForm">
+      <input type="text" id="answer3" required>
+      <input type="submit" value="Check Answer">
+    </form>
+    <p id="result3"></p>
+  </div>
+
+  <script>
+    function generateNumbers() {
+      var num1 = Math.floor(Math.random() * 100);
+      var num2 = Math.floor(Math.random() * 100);
+      var num3 = Math.floor(Math.random() * 100);
+      var num4 = Math.floor(Math.random() * 100);
+      var num5 = Math.floor(Math.random() * 100);
+      var num6 = Math.floor(Math.random() * 100);
+      if (num5 < num6) {
+        var temp = num5;
+        num5 = num6;
+        num6 = temp;
+      }
+      document.getElementById("num1").textContent = num1;
+      document.getElementById("num2").textContent = num2;
+      document.getElementById("num3").textContent = num3;
+      document.getElementById("num4").textContent = num4;
+      document.getElementById("num5").textContent = num5;
+      document.getElementById("num6").textContent = num6;
+    }
+
+    // Addition Form
+    document.getElementById("additionForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var num1 = parseInt(document.getElementById("num1").textContent);
+      var num2 = parseInt(document.getElementById("num2").textContent);
+      var userAnswer = parseInt(document.getElementById("answer").value);
+      var correctAnswer = num1 + num2;
+      if (userAnswer === correctAnswer) {
+        document.getElementById("result").textContent = "Correct! Well done!";
+      } else {
+        document.getElementById("result").textContent = "Incorrect. Try again!";
+      }
+
+      generateNumbers();
+      document.getElementById("answer").value = "";
+    });
+
+    // Multiplication Form
+    document.getElementById("multiplicationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var num3 = parseInt(document.getElementById("num3").textContent);
+      var num4 = parseInt(document.getElementById("num4").textContent);
+      var userAnswer = parseInt(document.getElementById("answer2").value);
+      var correctAnswer = num3 * num4;
+      if (userAnswer === correctAnswer) {
+        document.getElementById("result2").textContent = "Correct! Well done!";
+      } else {
+        document.getElementById("result2").textContent = "Incorrect. Try again!";
+      }
+
+      generateNumbers();
+      document.getElementById("answer2").value = "";
+    });
+
+    // Subtraction Form
+    document.getElementById("subtractionForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      var num5 = parseInt(document.getElementById("num5").textContent);
+      var num6 = parseInt(document.getElementById("num6").textContent);
+      var userAnswer = parseInt(document.getElementById("answer3").value);
+      var correctAnswer = num5 - num6;
+      if (userAnswer === correctAnswer) {
+        document.getElementById("result3").textContent = "Correct! Well done!";
+      } else {
+        document.getElementById("result3").textContent = "Incorrect. Try again!";
+      }
+
+      generateNumbers();
+      document.getElementById("answer3").value = "";
+    });
+
+    // Generate initial set of numbers
+    generateNumbers();
+  </script>
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Practice</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #fff;
+      font-weight: bold;
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .question {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100px;
+      height: 30px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      font-size: 24px;
+      margin-top: 10px;
+      color: #333;
+    }
+  </style>
+
+</head>
+
+
+</html>
